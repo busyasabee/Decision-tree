@@ -10,7 +10,11 @@ namespace Desicion_tree
     {
         static void Main(string[] args)
         {
-       
+            HashSet<int> hs = new HashSet<int>();
+            hs.Add(1);
+            hs.Add(1);
+
+
             Tree tree = new Tree();
             tree.readFile(@"E:\Projects\Visual Studio\Console\Desicion tree\table.txt");
             tree.headerOut();
@@ -19,7 +23,7 @@ namespace Desicion_tree
             int[] lineRange = new int[lineCount];
             for (int i = 0; i < lineCount; i++)
             {
-                lineRange[i] = i + 1;
+                lineRange[i] = i;
             }
             tree.run(lineRange);
             int d = 0;
