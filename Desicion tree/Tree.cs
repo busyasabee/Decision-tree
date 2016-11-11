@@ -71,16 +71,16 @@ namespace Desicion_tree
                 Console.Write('\n');
             }
         }
-        public void run(int[] lineNumbers) // работаем только с определёнными строками
+        public void run(List<int> lineNumbers) // работаем только с определёнными строками
         {
             double entropyT;
             double entropyChild;
             int countWinYes = 0;
             int countWinNo = 0;
-            int lineCount = lineNumbers.Length;
+            int lineCount = lineNumbers.Count;
 
             int colNumber = Array.IndexOf(tableHeader, "Победа");
-            for (int i = 0; i < lineNumbers.Length; i++)
+            for (int i = 0; i < lineNumbers.Count; i++)
             {
                 if (tableList[lineNumbers[i]][colNumber] == "нет")
                 {
@@ -92,7 +92,8 @@ namespace Desicion_tree
             double pYes = (double)countWinYes / lineCount;
             entropyT = -pNo * Math.Log(pNo, 2) - pYes * Math.Log(pYes, 2);
             Console.WriteLine("Энтропия вершины " + entropyT);
-            List<double> childEntropyList = new List<double>();
+            //List<double> childEntropyList = new List<double>(); //надо ещё запоминать номера столбцов
+            Dictionary<int, double> childEntropyDict = new Dictionary<int, double>();
             // сделать перебор атрибутов
             for (int i = 1; i < colsCount-1; i++)
             {
@@ -104,7 +105,7 @@ namespace Desicion_tree
                 secondValueYesCount = secondValueNoCount = 0d;
                 List<int> firstValueLineNumbers = new List<int>();
                 List<int> secondValueLineNumbers = new List<int>();
-                for (int j = 0; j < lineNumbers.Length; j++)
+                for (int j = 0; j < lineNumbers.Count; j++)
                 {
                     if (tableList[lineNumbers[j]][i] == attributeValuesDict[i][0])
                     {
@@ -146,10 +147,10 @@ namespace Desicion_tree
                 childEntropyList.Add(entropyChild);
 
             }
-
-            int indexOfAttribute = childEntropyList.IndexOf(childEntropyList.Max());
+            double minEntropy = childEntropyList.Min();
+            int indexOfAttribute = childEntropyList.IndexOf(minEntropy);
             usedAttributes[indexOfAttribute] = true;
-            Array.er
+            lineNumbers.Remove(indexOfAttribute);
             int d = 0;
 
         }

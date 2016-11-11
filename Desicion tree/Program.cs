@@ -20,10 +20,10 @@ namespace Desicion_tree
             tree.headerOut();
             tree.showTable();
             int lineCount = tree.tableLinesCount;
-            int[] lineRange = new int[lineCount];
+            List<int> lineRange = new List<int>();
             for (int i = 0; i < lineCount; i++)
             {
-                lineRange[i] = i;
+                lineRange.Add(i);
             }
             tree.run(lineRange);
             int d = 0;
