@@ -11,6 +11,7 @@ namespace Desicion_tree
     class Tree
     {
         List<string[]> tableList = new List<string[]>();
+        Dictionary<int, Tuple<List<int>, List<int>>> attributeLineNumbers; // храним номер столбца и к нему строки в которых встречались два значения
         Dictionary<int, string[]> attributeValuesDict = new Dictionary<int, string[]>()
         {
             {1,  new string []{"выше", "ниже" } },
@@ -23,14 +24,14 @@ namespace Desicion_tree
         {
             get { return lineCount; }
         }
-        bool[] usedAttributes;
+        //bool[] usedAttributes;
         int colsCount;
         int lineCount;
         string[] tableHeader;
         bool firstTime = true;
         //string[,] table = new string[9, 5] {"Соперник", "Играем","Лидеры" };
 
-        public void readFile(string path)
+        public void readFile(string path, out bool[] usedAttributes)
         {
             string line;
             Encoding enc = Encoding.GetEncoding(1251);
@@ -72,13 +73,14 @@ namespace Desicion_tree
                 Console.Write('\n');
             }
         }
-        public void run(List<int> lineNumbers) // работаем только с определёнными строками
+        public void run(List<int> lineNumbers, bool[] usedAttributes) // работаем только с определёнными строками
         {
             double entropyT;
             double entropyChild;
             int countWinYes = 0;
             int countWinNo = 0;
             int lineCount = lineNumbers.Count;
+            attributeLineNumbers = new Dictionary<int, Tuple<List<int>, List<int>>>(); 
             List<int> firstValueLineNumbers = new List<int>();
             List<int> secondValueLineNumbers = new List<int>();
 
@@ -137,6 +139,7 @@ namespace Desicion_tree
                             secondValueLineNumbers.Add(lineNumbers[j]);
                         }
                     }
+                    //attributeLineNumbers.Add(i, new Tuple<List<int>, List<int>>(firstValueLineNumbers, secondValueLineNumbers));
                     double p1 = firstValueCount / lineCount;
                     double p2 = secondValueCount / lineCount;
                     double p1Yes, p1No, p2Yes, p2No;
@@ -179,16 +182,17 @@ namespace Desicion_tree
                         p2No = 1;
                     }
                     entropyChild = p1 * (-p1Yes * Math.Log(p1Yes, 2) - p1No * Math.Log(p1No, 2)) + p2 * (-p2Yes * Math.Log(p2Yes, 2) - p2No * Math.Log(p2No, 2));
-                    if (Double.IsNaN(entropyChild)!=true)
+                    if(firstValueLineNumbers.Count!=0 && secondValueLineNumbers.Count != 0)
                     {
-                       // entropyChild = 0;
-                        childEntropyDict.Add(i, entropyChild);
+                        if (Double.IsNaN(entropyChild) == true)
+                        {
+                            entropyChild = 0;
+                            childEntropyDict.Add(i, entropyChild);
+                        }
+                        else childEntropyDict.Add(i, entropyChild);
                     }
-                    int t = 1;
-                    //else childEntropyDict.Add(i, entropyChild);
-
+                    
                     //childEntropyList.Add(entropyChild);
-
 
                 }
                 firstValueLineNumbers.Clear();
@@ -215,6 +219,7 @@ namespace Desicion_tree
                 else secondValueLineNumbers.Add(lineNumbers[i]);
               
             }
+            
             Console.Write("Строки разделились на ");
             for (int i = 0; i < firstValueLineNumbers.Count; i++)
             {
@@ -226,9 +231,15 @@ namespace Desicion_tree
                 Console.Write(secondValueLineNumbers[i].ToString() + " ");
             }
             Console.WriteLine();
-
-            run(firstValueLineNumbers);
-            run(secondValueLineNumbers);
+            //bool[] copyUsedAttributes = (bool[])usedAttributes.Clone();
+            /*bool[] copyUsedAttributes = new bool[usedAttributes.Length];
+            for (int i = 0; i < usedAttributes.Length; i++)
+            {
+                copyUsedAttributes[i] = usedAttributes[i];
+            }*/
+            run(firstValueLineNumbers, usedAttributes/*copyUsedAttributes*/);
+            run(secondValueLineNumbers, usedAttributes/*copyUsedAttributes*/);
+            usedAttributes[indexOfAttribute] = false;
             int d = 0;
 
         }

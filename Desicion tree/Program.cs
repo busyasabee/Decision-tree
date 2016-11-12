@@ -16,7 +16,8 @@ namespace Desicion_tree
 
 
             Tree tree = new Tree();
-            tree.readFile(@"E:\Projects\Visual Studio\Console\Desicion tree\table.txt");
+            bool[] usedAttributes;
+            tree.readFile(@"E:\Projects\Visual Studio\Console\Desicion tree\table.txt", out usedAttributes);
             tree.headerOut();
             tree.showTable();
             int lineCount = tree.tableLinesCount;
@@ -25,7 +26,8 @@ namespace Desicion_tree
             {
                 lineRange.Add(i);
             }
-            tree.run(lineRange);
+            
+            tree.run(lineRange, usedAttributes);
             int d = 0;
         }
     }
