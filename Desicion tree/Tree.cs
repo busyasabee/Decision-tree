@@ -7,11 +7,25 @@ using System.Threading.Tasks;
 
 namespace Desicion_tree
 {
+    
 
     class Tree
     {
+        string indent;
+        string constIndent;
+        // To store the table from a file
         List<string[]> tableList = new List<string[]>();
-        Dictionary<int, Tuple<List<int>, List<int>>> attributeLineNumbers; // храним номер столбца и к нему строки в которых встречались два значения
+        int colsCount;
+        int lineCount;
+        string[] tableHeader;
+        // To align the table rows in the console
+        int maxWordLength;
+        int wordWidth;
+        string outputPath;
+        
+        // храним номер столбца и к нему строки в которых встречались два значения
+        // don't use
+        //Dictionary<int, Tuple<List<int>, List<int>>> attributeLineNumbers; 
         Dictionary<int, string[]> attributeValuesDict = new Dictionary<int, string[]>()
         {
             {1,  new string []{"выше", "ниже" } },
@@ -24,51 +38,66 @@ namespace Desicion_tree
         {
             get { return lineCount; }
         }
+        public string outputFilePath
+        {
+            set { outputPath = value; }
+        
+        }
         //bool[] usedAttributes;
-        int colsCount;
-        int lineCount;
-        string[] tableHeader;
-        bool firstTime = true;
+        // don't use
+        //bool firstTime = true;
         //string[,] table = new string[9, 5] {"Соперник", "Играем","Лидеры" };
 
-        public void readFile(string path, out bool[] usedAttributes)
+        // Read the lines from a file into the table
+        public void readTableFromFile(string path, out bool[] usedAttributes)
         {
             string line;
             Encoding enc = Encoding.GetEncoding(1251);
             StreamReader file = new StreamReader(path, enc);
+            string[] splitStr;
             while ((line = file.ReadLine()) != null)
             {
-                string[] str;
-                str = line.Split(' ');
-                colsCount = str.Length;
-                tableList.Add(str);
+
+                splitStr = line.Split(' ');
+
+                foreach (var word in splitStr)
+                {
+                    if (word.Length >= maxWordLength)
+                    {
+                        maxWordLength = word.Length;
+                    }
+                }
+
+                constIndent += " ";
+                colsCount = splitStr.Length;
+                tableList.Add(splitStr);
 
             }
+     
+            wordWidth = maxWordLength + 5;
             usedAttributes = new bool[colsCount];
             tableHeader = tableList[0];
             tableList.RemoveAt(0);
             lineCount = tableList.Count;
             file.Close();
-            /* System.Console.WriteLine(t.Item1);
-             System.Console.WriteLine(" Have been read {0} lines ", counter);
-             System.Console.ReadLine();*/
 
         }
-        public void headerOut()
-        {
-            for (int i = 0; i < tableHeader.Length; i++)
-            {
-                Console.Write(tableHeader[i] + " ");
-            }
-            Console.Write('\n');
-        }
+     
         public void showTable()
         {
+            int consoleWidth = colsCount * wordWidth;
+            Console.SetWindowSize(consoleWidth, Console.WindowHeight);
+            for (int i = 0; i < tableHeader.Length; i++)
+            {
+                Console.Write("{0, -" + wordWidth + "}", tableHeader[i]);
+            }
+            Console.Write('\n');
+
             for (int i = 0; i < tableList.Count; i++)
             {
                 for (int j = 0; j < tableList[i].Length; j++)
                 {
-                    Console.Write(tableList[i][j] + " ");
+                    Console.Write("{0, -" + wordWidth + "}",tableList[i][j]);
                 }
                 Console.Write('\n');
             }
@@ -80,7 +109,7 @@ namespace Desicion_tree
             int countWinYes = 0;
             int countWinNo = 0;
             int lineCount = lineNumbers.Count;
-            attributeLineNumbers = new Dictionary<int, Tuple<List<int>, List<int>>>(); 
+            //attributeLineNumbers = new Dictionary<int, Tuple<List<int>, List<int>>>(); 
             List<int> firstValueLineNumbers = new List<int>();
             List<int> secondValueLineNumbers = new List<int>();
 
@@ -104,16 +133,35 @@ namespace Desicion_tree
                 pYes = 1;
             }
             entropyT = -pNo * Math.Log(pNo, 2) - pYes * Math.Log(pYes, 2);
-            Console.Write("Энтропия вершины ");
-            for (int i = 0; i < lineNumbers.Count; i++)
+            //Console.Write("Энтропия вершины ");
+            Console.Write(indent);
+            try
             {
-                Console.Write(lineNumbers[i] + " ");
+                using (StreamWriter sw = new StreamWriter(outputPath, true, System.Text.Encoding.Default))
+                {
+                    sw.Write("Entropy of the node { ");
+                    for (int i = 0; i < lineNumbers.Count; i++)
+                    {
+                        Console.Write((lineNumbers[i] + 1) + " ");
+                        sw.Write((lineNumbers[i] + 1) + " ");
+                    }
+                    sw.WriteLine("} is equal " + entropyT);
+
+                }
+
             }
-            Console.WriteLine("равна " + entropyT);
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            Console.WriteLine();
+            indent += constIndent + constIndent;
             if (entropyT == 0) return; //выходим
             //List<double> childEntropyList = new List<double>(); //надо ещё запоминать номера столбцов
             Dictionary<int, double> childEntropyDict = new Dictionary<int, double>();
-            // сделать перебор атрибутов
+            // Iterate on attributes
             for (int i = 1; i < colsCount-1; i++)
             {
                 if (usedAttributes[i] != true)
@@ -206,7 +254,11 @@ namespace Desicion_tree
             usedAttributes[indexOfAttribute] = true; // будет ли видно из рекурсии это?
                                                      // to do вывести в консоль по какому атрибуту делим и какие номера строк имеем после разделения
                                                      // to do искать номера строк к одним и вторым значением в значениях выбранного атрибута
-            Console.WriteLine("Делим по атрибуту " + tableHeader[indexOfAttribute]);
+
+
+       
+            
+
             /*List<int> firstValueNumbers = new List<int>();//можно объявить в начале  
             List<int> secondValueNumbers = new List<int>();
             firstValueNumbers.*/
@@ -219,18 +271,51 @@ namespace Desicion_tree
                 else secondValueLineNumbers.Add(lineNumbers[i]);
               
             }
+
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(outputPath, true, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine("Divide the attribute " + tableHeader[indexOfAttribute]);
+                    sw.Write("Children are { ");
+
+                    for (int i = 0; i < firstValueLineNumbers.Count; i++)
+                    {
+                        sw.Write((firstValueLineNumbers[i] + 1) + " ");
+                    }
+
+                    sw.Write("} and { ");
+
+                    for (int i = 0; i < secondValueLineNumbers.Count; i++)
+                    {
+                        sw.Write((secondValueLineNumbers[i] + 1) + " ");
+                    }
+
+                    sw.WriteLine("}");
+
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             
-            Console.Write("Строки разделились на ");
-            for (int i = 0; i < firstValueLineNumbers.Count; i++)
-            {
-                Console.Write(firstValueLineNumbers[i].ToString() + " ");
-            }
-            Console.Write(" и ");
-            for (int i = 0; i < secondValueLineNumbers.Count; i++)
-            {
-                Console.Write(secondValueLineNumbers[i].ToString() + " ");
-            }
-            Console.WriteLine();
+
+            /* Console.Write(indent);
+             for (int i = 0; i < firstValueLineNumbers.Count; i++)
+             {
+                 Console.Write(firstValueLineNumbers[i].ToString() + " ");
+             }
+             Console.WriteLine();
+             Console.Write(indent);
+             //Console.Write(" и ");
+             for (int i = 0; i < secondValueLineNumbers.Count; i++)
+             {
+                 Console.Write(secondValueLineNumbers[i].ToString() + " ");
+             }
+             Console.WriteLine();*/
             //bool[] copyUsedAttributes = (bool[])usedAttributes.Clone();
             /*bool[] copyUsedAttributes = new bool[usedAttributes.Length];
             for (int i = 0; i < usedAttributes.Length; i++)
@@ -238,8 +323,10 @@ namespace Desicion_tree
                 copyUsedAttributes[i] = usedAttributes[i];
             }*/
             run(firstValueLineNumbers, usedAttributes/*copyUsedAttributes*/);
+            indent = indent.Remove(0, 2 * constIndent.Length);
             run(secondValueLineNumbers, usedAttributes/*copyUsedAttributes*/);
             usedAttributes[indexOfAttribute] = false;
+            indent = indent.Remove(0, 2 * constIndent.Length);
             int d = 0;
 
         }

@@ -3,22 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Desicion_tree
 {
     class Program
     {
+   
         static void Main(string[] args)
         {
-            HashSet<int> hs = new HashSet<int>();
-            hs.Add(1);
-            hs.Add(1);
-
-
+         
             Tree tree = new Tree();
             bool[] usedAttributes;
-            tree.readFile(@"E:\Projects\Visual Studio\Console\Desicion tree\table.txt", out usedAttributes);
-            tree.headerOut();
+            var inputFilePath = @"E:\Projects\Visual Studio\Console\Desicion tree\table.txt";
+            tree.readTableFromFile(inputFilePath, out usedAttributes);
+            var outputFilePath = @"E:\Projects\Visual Studio\Console\Desicion tree\output.txt";
+            tree.outputFilePath = outputFilePath;
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(outputFilePath, true, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine();
+                    sw.WriteLine(" ----- " + "New program launch" + " ----- ");
+                    sw.WriteLine();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             tree.showTable();
             int lineCount = tree.tableLinesCount;
             List<int> lineRange = new List<int>();
@@ -28,6 +43,7 @@ namespace Desicion_tree
             }
             
             tree.run(lineRange, usedAttributes);
+            Console.ReadKey();
             int d = 0;
         }
     }
