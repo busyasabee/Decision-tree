@@ -115,7 +115,8 @@ namespace Desicion_tree
             }
             int t = 0;
         }
-        public void run(List<int> lineNumbers, bool[] usedAttributes) // работаем только с определёнными строками
+        // lineNumbers - lines from table
+        public void run(List<int> lineNumbers, bool[] usedAttributes , /*bool isRoot,*/ string branchLabel="") // работаем только с определёнными строками
         {
             int whitespacesCount;
             double entropyT;
@@ -147,31 +148,51 @@ namespace Desicion_tree
                 pYes = 1;
             }
             entropyT = -pNo * Math.Log(pNo, 2) - pYes * Math.Log(pYes, 2);         
-            try
+            // We should show the node after the exit, it's happen later if the entropy is not zero 
+            if (entropyT == 0)
             {
-                using (StreamWriter sw = new StreamWriter(outputPath, true, System.Text.Encoding.Default))
+                try
                 {
-                    sw.Write("Entropy of the node { ");
-                    Console.Write(indent);
-                    for (int i = 0; i < lineNumbers.Count; i++)
+                    using (StreamWriter sw = new StreamWriter(outputPath, true, System.Text.Encoding.Default))
                     {
-                        Console.Write((lineNumbers[i] + 1) + " ");
-                        sw.Write((lineNumbers[i] + 1) + " ");
+                        sw.Write("Entropy of the node { ");
+                        if (branchLabel.Length == 0)
+                        {
+                            Console.Write(indent);
+                            for (int i = 0; i < lineNumbers.Count; i++)
+                            {
+                                Console.Write((lineNumbers[i] + 1) + " ");
+                                sw.Write((lineNumbers[i] + 1) + " ");
+                            }
+                            sw.WriteLine("} is equal " + entropyT);
+                            
+                        }
+                        else
+                        {
+                            //indent = indent.Remove(0, branchLabel.Length + 1);
+                            Console.Write(indent);
+                            Console.Write(branchLabel);
+                            //increaseIndent(ref indent, branchLabel.Length + 1);
+                            Console.Write(" ");
+                            for (int i = 0; i < lineNumbers.Count; i++)
+                            {
+                                Console.Write((lineNumbers[i] + 1) + " ");
+                                sw.Write((lineNumbers[i] + 1) + " ");
+                            }
+                            sw.WriteLine("} is equal " + entropyT); 
+
+                        }
+
                     }
-                    sw.WriteLine("} is equal " + entropyT);
-                    
 
                 }
 
-            }
-            catch (Exception)
-            {
+                catch (Exception)
+                {
 
-                throw;
-            }
-
-            if (entropyT == 0)
-            {
+                    throw;
+                }
+                Console.WriteLine();
                 Console.WriteLine();
                 return; //выходим
             }
@@ -292,8 +313,40 @@ namespace Desicion_tree
             {
                 using (StreamWriter sw = new StreamWriter(outputPath, true, System.Text.Encoding.Default))
                 {
-                    Console.WriteLine(tableHeader[indexOfAttribute]);
-                    whitespacesCount = 2 * (lineNumbers.Count) + tableHeader[indexOfAttribute].Length + 1;
+                    sw.Write("Entropy of the node { ");
+                    if (branchLabel.Length == 0)
+                    {
+                        Console.Write(indent);
+                        for (int i = 0; i < lineNumbers.Count; i++)
+                        {
+                            Console.Write((lineNumbers[i] + 1) + " ");
+                            sw.Write((lineNumbers[i] + 1) + " ");
+                        }
+                        sw.WriteLine("} is equal " + entropyT);
+                        whitespacesCount = 2 * (lineNumbers.Count) + tableHeader[indexOfAttribute].Length + 1;
+                        Console.WriteLine(tableHeader[indexOfAttribute]);
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        //indent = indent.Remove(0, branchLabel.Length + 1);
+                        Console.Write(indent);
+                        Console.Write(branchLabel);
+                        //increaseIndent(ref indent, branchLabel.Length + 1);
+                        Console.Write(" ");           
+                        for (int i = 0; i < lineNumbers.Count; i++)
+                        {
+                            Console.Write((lineNumbers[i] + 1) + " ");
+                            sw.Write((lineNumbers[i] + 1) + " ");
+                        }
+                        sw.WriteLine("} is equal " + entropyT);
+                        whitespacesCount = 2 * (lineNumbers.Count) + tableHeader[indexOfAttribute].Length + 1 + (branchLabel.Length + 1);
+                        Console.WriteLine(tableHeader[indexOfAttribute]);
+                        Console.WriteLine();
+
+                    }
+                    
+
                     //indent += constIndent;
                     increaseIndent(ref indent, whitespacesCount);
                     //indentLength = indent.Length;
@@ -344,9 +397,9 @@ namespace Desicion_tree
             {
                 copyUsedAttributes[i] = usedAttributes[i];
             }*/
-            run(firstValueLineNumbers, usedAttributes/*copyUsedAttributes*/);
+            run(firstValueLineNumbers, usedAttributes/*copyUsedAttributes*//*, false*/, attributeValuesDict[indexOfAttribute][0]);
             //indent = indent.Remove(0, whitespacesCount);
-            run(secondValueLineNumbers, usedAttributes/*copyUsedAttributes*/);
+            run(secondValueLineNumbers, usedAttributes/*copyUsedAttributes*//*, false*/, attributeValuesDict[indexOfAttribute][1]);
             usedAttributes[indexOfAttribute] = false;
             indent = indent.Remove(0, whitespacesCount);
             int d = 0;

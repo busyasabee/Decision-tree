@@ -548,3 +548,543 @@ Divide the attribute Лидеры
 Children are { 8 } and { 5 }
 Entropy of the node { 8 } is equal 0
 Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0
+
+ ----- New program launch ----- 
+
+Entropy of the node { 1 2 3 4 5 6 7 8 } is equal 0,954434002924965
+Divide the attribute Играем
+Children are { 1 2 3 4 6 } and { 5 7 8 }
+Entropy of the node { 1 2 3 4 6 } is equal 0,721928094887362
+Divide the attribute Лидеры
+Children are { 1 2 } and { 3 4 6 }
+Entropy of the node { 1 2 } is equal 1
+Divide the attribute Дождь
+Children are { 1 } and { 2 }
+Entropy of the node { 1 } is equal 0
+Entropy of the node { 2 } is equal 0
+Entropy of the node { 3 4 6 } is equal 0
+Entropy of the node { 5 7 8 } is equal 0,91829583405449
+Divide the attribute Соперник
+Children are { 7 } and { 5 8 }
+Entropy of the node { 7 } is equal 0
+Entropy of the node { 5 8 } is equal 1
+Divide the attribute Лидеры
+Children are { 8 } and { 5 }
+Entropy of the node { 8 } is equal 0
+Entropy of the node { 5 } is equal 0

@@ -42,7 +42,7 @@ namespace Desicion_tree
                 lineRange.Add(i);
             }
             
-            tree.run(lineRange, usedAttributes);
+            tree.run(lineRange, usedAttributes/*, true*/);
             Console.ReadKey();
             int d = 0;
         }
