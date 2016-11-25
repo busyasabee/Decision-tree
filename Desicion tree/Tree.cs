@@ -11,7 +11,9 @@ namespace Desicion_tree
 
     class Tree
     {
-        string indent;
+        string indent = "";
+
+        int indentLength;
         string constIndent;
         // To store the table from a file
         List<string[]> tableList = new List<string[]>();
@@ -79,6 +81,8 @@ namespace Desicion_tree
             tableHeader = tableList[0];
             tableList.RemoveAt(0);
             lineCount = tableList.Count;
+            //whitespacesCount = 2 * lineCount + maxWordLength + 1;
+            //increaseIndent(ref constIndent, whitespacesCount);
             file.Close();
 
         }
@@ -102,8 +106,18 @@ namespace Desicion_tree
                 Console.Write('\n');
             }
         }
+        // Add to the indent n whitespaces
+        void increaseIndent(ref string indent, int n)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                indent+=" ";
+            }
+            int t = 0;
+        }
         public void run(List<int> lineNumbers, bool[] usedAttributes) // работаем только с определёнными строками
         {
+            int whitespacesCount;
             double entropyT;
             double entropyChild;
             int countWinYes = 0;
@@ -132,20 +146,20 @@ namespace Desicion_tree
             {
                 pYes = 1;
             }
-            entropyT = -pNo * Math.Log(pNo, 2) - pYes * Math.Log(pYes, 2);
-            //Console.Write("Энтропия вершины ");
-            Console.Write(indent);
+            entropyT = -pNo * Math.Log(pNo, 2) - pYes * Math.Log(pYes, 2);         
             try
             {
                 using (StreamWriter sw = new StreamWriter(outputPath, true, System.Text.Encoding.Default))
                 {
                     sw.Write("Entropy of the node { ");
+                    Console.Write(indent);
                     for (int i = 0; i < lineNumbers.Count; i++)
                     {
                         Console.Write((lineNumbers[i] + 1) + " ");
                         sw.Write((lineNumbers[i] + 1) + " ");
                     }
                     sw.WriteLine("} is equal " + entropyT);
+                    
 
                 }
 
@@ -156,9 +170,11 @@ namespace Desicion_tree
                 throw;
             }
 
-            Console.WriteLine();
-            indent += constIndent + constIndent;
-            if (entropyT == 0) return; //выходим
+            if (entropyT == 0)
+            {
+                Console.WriteLine();
+                return; //выходим
+            }
             //List<double> childEntropyList = new List<double>(); //надо ещё запоминать номера столбцов
             Dictionary<int, double> childEntropyDict = new Dictionary<int, double>();
             // Iterate on attributes
@@ -276,6 +292,12 @@ namespace Desicion_tree
             {
                 using (StreamWriter sw = new StreamWriter(outputPath, true, System.Text.Encoding.Default))
                 {
+                    Console.WriteLine(tableHeader[indexOfAttribute]);
+                    whitespacesCount = 2 * (lineNumbers.Count) + tableHeader[indexOfAttribute].Length + 1;
+                    //indent += constIndent;
+                    increaseIndent(ref indent, whitespacesCount);
+                    //indentLength = indent.Length;
+                    //indent += constIndent + constIndent;
                     sw.WriteLine("Divide the attribute " + tableHeader[indexOfAttribute]);
                     sw.Write("Children are { ");
 
@@ -323,10 +345,10 @@ namespace Desicion_tree
                 copyUsedAttributes[i] = usedAttributes[i];
             }*/
             run(firstValueLineNumbers, usedAttributes/*copyUsedAttributes*/);
-            indent = indent.Remove(0, 2 * constIndent.Length);
+            //indent = indent.Remove(0, whitespacesCount);
             run(secondValueLineNumbers, usedAttributes/*copyUsedAttributes*/);
             usedAttributes[indexOfAttribute] = false;
-            indent = indent.Remove(0, 2 * constIndent.Length);
+            indent = indent.Remove(0, whitespacesCount);
             int d = 0;
 
         }
