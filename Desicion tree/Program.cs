@@ -12,8 +12,12 @@ namespace Desicion_tree
    
         static void Main(string[] args)
         {
-         
+            List<List<int>> list = new List<List<int>>();
+            list.Add(new List<int>());
+            list[0].Add(99);
+            int leafLabelsCount = 2;
             Tree tree = new Tree();
+            tree.LeafLabelsCount = leafLabelsCount;
             bool[] usedAttributes;
             var inputFilePath = @"E:\Projects\Visual Studio\Console\Desicion tree\table.txt";
             tree.readTableFromFile(inputFilePath, out usedAttributes);
