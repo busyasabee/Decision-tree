@@ -9,6 +9,7 @@ namespace Desicion_tree
 {
     class Tree
     {
+        
         int tableWidth = 0;
         int consoleWidth = 0;
         List<Attribute> attributes = new List<Attribute>();
