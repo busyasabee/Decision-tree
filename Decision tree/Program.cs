@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Desicion_tree
+
+namespace Decision_tree
 {
     class Program
     {
@@ -13,7 +14,6 @@ namespace Desicion_tree
         static void Main(string[] args)
         {
 
-            //AttributeValue a = new AttributeValue();
             int leafLabelsCount = 2;
             Tree tree = new Tree();
             tree.LeafLabelsCount = leafLabelsCount;

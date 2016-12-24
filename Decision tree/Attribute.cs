@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Desicion_tree
+namespace Decision_tree
 {
 
     public class Attribute
