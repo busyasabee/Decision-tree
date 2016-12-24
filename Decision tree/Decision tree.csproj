@@ -7,8 +7,8 @@
     <ProjectGuid>{7E461701-3DBA-4E2A-8130-03CC13D0085F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Desicion_tree</RootNamespace>
-    <AssemblyName>Desicion tree</AssemblyName>
+    <RootNamespace>Decision_tree</RootNamespace>
+    <AssemblyName>Decision tree</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tree.cs" />

@@ -12,43 +12,27 @@ namespace Desicion_tree
    
         static void Main(string[] args)
         {
-            List<List<int>> list = new List<List<int>>();
-            list.Add(new List<int>());
-            list[0].Add(99);
+
             int leafLabelsCount = 2;
             Tree tree = new Tree();
             tree.LeafLabelsCount = leafLabelsCount;
             bool[] usedAttributes;
-            var inputFilePath = @"E:\Projects\Visual Studio\Console\Desicion tree\table.txt";
+            var inputFilePath = @"E:\Projects\Visual Studio\Console\Decision tree\table.txt";
             tree.readTableFromFile(inputFilePath, out usedAttributes);
-            var outputFilePath = @"E:\Projects\Visual Studio\Console\Desicion tree\output.txt";
+            var outputFilePath = @"E:\Projects\Visual Studio\Console\Decision tree\output.txt";
             tree.outputFilePath = outputFilePath;
-            try
-            {
-                using (StreamWriter sw = new StreamWriter(outputFilePath, true, System.Text.Encoding.Default))
-                {
-                    sw.WriteLine();
-                    sw.WriteLine(" ----- " + "New program launch" + " ----- ");
-                    sw.WriteLine();
-                }
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
             tree.showTable();
             int lineCount = tree.tableLinesCount;
             List<int> lineRange = new List<int>();
+
             for (int i = 0; i < lineCount; i++)
             {
                 lineRange.Add(i);
             }
             
-            tree.run(lineRange, usedAttributes/*, true*/);
+            tree.run(lineRange);
             Console.ReadKey();
-            int d = 0;
+
         }
     }
 }
