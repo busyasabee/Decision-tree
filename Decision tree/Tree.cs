@@ -301,7 +301,8 @@ namespace Decision_tree
                     {  
                         for (int k = 0; k < attributeValuesCount; k++)
                         {
-                            string attributeValue = attribute.getValue(k);
+                            //string attributeValue = attribute.getValue(k);
+                            AttributeValue attributeValue = new AttributeValue(attribute.getValue(k));
 
                             if (table[lineNumbers[j]][attributeIndex] == attributeValue)
                             {
