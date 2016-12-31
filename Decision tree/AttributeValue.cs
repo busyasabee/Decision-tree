@@ -42,10 +42,6 @@ namespace Decision_tree
             lineNumbers.Add(number);
         }
 
-        /*public void addLeafLabelCount(int value)
-        {
-            leafLabelsCount.Add(value);
-        }*/
 
         public void increaseLeafLabelCount(int index, int value)
         {
@@ -104,5 +100,6 @@ namespace Decision_tree
             leafLabelsCount = new int[labelsCount];
             pLabels = new double[labelsCount];
         }
+
     }
 }
