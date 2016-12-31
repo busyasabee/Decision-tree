@@ -14,7 +14,7 @@ namespace Decision_tree
         private List<int> lineNumbers;
         private int[] leafLabelsCount;
         public double[] pLabels;
-        //private List<int> leafLabelsCount;
+
 
         public AttributeValue(string value, int labelsCount)
         {
