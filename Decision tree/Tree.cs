@@ -88,7 +88,9 @@ namespace Decision_tree
 
                 for (int j = 0; j < lineCount; j++)
                 {
-                    string value = table[j][i];
+                    //string value = table[j][i];
+                    AttributeValue value = new AttributeValue(table[j][i], leafsLabelsCount);
+
                     if (attribute.containValue(value) == false)
                     {
                         attribute.addValue(value);
@@ -288,26 +290,27 @@ namespace Decision_tree
                     List<double> pValues = new List<double>();
                     Dictionary<string, List<double>> pLabelsDict = new Dictionary<string, List<double>>();
 
-                    for (int i = 0; i < attributeValuesCount; i++)
+                    /*for (int i = 0; i < attributeValuesCount; i++)
                     {
-                        string attributeValue = attribute.getValue(i);
+                        AttributeValue attributeValue = attribute.getValue(i);
                         valueLineNumbersDict.Add(attributeValue, new List<int>());
 
-                    }
-
-
+                    }*/
 
                     for (int j = 0; j < lineNumbers.Count; j++)
                     {  
                         for (int k = 0; k < attributeValuesCount; k++)
                         {
                             //string attributeValue = attribute.getValue(k);
-                            AttributeValue attributeValue = new AttributeValue(attribute.getValue(k));
+                            AttributeValue attributeValue = attribute.getValue(k); // может в атрибуте хранить список AttributeValue
+                            string innerValue = attributeValue.getPlainValue();
 
-                            if (table[lineNumbers[j]][attributeIndex] == attributeValue)
+                            if (table[lineNumbers[j]][attributeIndex] == innerValue)
                             {
-                                valuesFrequency[k] += 1;
-                                valueLineNumbersDict[attributeValue].Add(lineNumbers[j]);
+                                //valuesFrequency[k] += 1;
+                                attributeValue.increaseFrequency(1);
+                                attributeValue.addLineNumber(lineNumbers[j]);
+                                //valueLineNumbersDict[attributeValue].Add(lineNumbers[j]);
                             }
 
                         }
@@ -316,25 +319,32 @@ namespace Decision_tree
 
                     for (int k = 0; k < attributeValuesCount; k++)
                     {
-                        string attributeValue = attribute.getValue(k);
-                        valueLeafLabelsCountDict.Add(attributeValue, new List<int>());
-                        valueLeafLabelsCountDict[attributeValue].Add(0);
-                        valueLeafLabelsCountDict[attributeValue].Add(0);
-                        pLabelsDict.Add(attributeValue, new List<double>());
+                        AttributeValue attributeValue = attribute.getValue(k);
+
+                        //for (int i = 0; i < leafsLabelsCount; i++)
+                        //{
+                        //    attributeValue.addLeafLabelCount(0);
+                        //}
+                        //valueLeafLabelsCountDict.Add(attributeValue, new List<int>());
+                        //valueLeafLabelsCountDict[attributeValue].Add(0);
+                        //valueLeafLabelsCountDict[attributeValue].Add(0);
+                        //pLabelsDict.Add(attributeValue, new List<double>());
                         double pValue = (double)valuesFrequency[k] / lineCount;
                         pValues.Add(pValue);
                     }
 
-                    foreach (var key in valueLineNumbersDict.Keys)
+                    for (int i = 0; i < attribute.getCountValues(); i++)
                     {
-                        for (int j = 0; j < valueLineNumbersDict[key].Count; j++)
+                        AttributeValue attributeValue = attribute.getValue(i);
+
+                        for (int j = 0; j < attributeValue.countLineNumbers(); j++)
                         {
                             for (int k = 0; k < leafsLabelsCount; k++)
                             {
-                                if (table[valueLineNumbersDict[key][j]][lastColNumber] == leafsLabels[k])
+                                if (table[attributeValue.getLineNumber(j)][lastColNumber] == leafsLabels[k])
                                 {
 
-                                    valueLeafLabelsCountDict[key][k] += 1;
+                                    attributeValue.increaseLeafLabelCount(k, 1);
                                 }
                             }
 
@@ -342,23 +352,27 @@ namespace Decision_tree
 
                         for (int j = 0; j < leafsLabelsCount; j++)
                         {
-                            double p = (double)valueLeafLabelsCountDict[key][j] / valueLeafLabelsCountDict[key].Sum();
+                            double p = (double)attributeValue.getCountLeafLabel(j) / attributeValue.getLeafsCountSum();
                             p = (p == 0) ? 1 : p;
-                            pLabelsDict[key].Add(p);
+                            attributeValue.pLabels[j] = p;
+
                         }
+
                     }
+
 
                     for (int j = 0; j < pValues.Count; j++)
                     {
-                        string attributeValue = attribute.getValue(j);
+                        AttributeValue attributeValue = attribute.getValue(j);
                         double pTmp = 0;
 
-                        for (int k = 0; k < pLabelsDict[attributeValue].Count; k++)
+                        for (int k = 0; k < leafsLabelsCount; k++)
                         {
-                            pTmp += -pLabelsDict[attributeValue][k] * Math.Log(pLabelsDict[attributeValue][k], 2);
+                            pTmp += - attributeValue.pLabels[k] * Math.Log(attributeValue.pLabels[k], 2);
                         }
 
                         entropyChild += pValues[j] * pTmp; // entropy, if divide by the attribute
+
 
                     }
 
@@ -389,7 +403,7 @@ namespace Decision_tree
                 for (int j = 0; j < attributeForSplit.getCountValues(); j++)
                 {
 
-                    if (table[lineNumbers[i]][indexOfAttribute] == attributeForSplit.getValue(j))
+                    if (table[lineNumbers[i]][indexOfAttribute] == attributeForSplit.getValue(j).getPlainValue())
                     {
                         linesAfterSplit[j].Add(lineNumbers[i]);
                     }
@@ -412,9 +426,17 @@ namespace Decision_tree
             Console.WriteLine();
             increaseIndent(ref indent, whitespacesCount);
 
+            foreach (var attribute in attributes)
+            {
+                for (int i = 0; i < attribute.getCountValues(); i++)
+                {
+                    attribute.getValue(i).clear();
+                }
+            }
+
             for (int i = 0; i < attributeForSplit.getCountValues(); i++)
             {
-                run(linesAfterSplit[i], attributeForSplit.getValue(i));
+                run(linesAfterSplit[i], attributeForSplit.getValue(i).getPlainValue());
             }
 
             attributes[indexOfAttribute - 1].IsUsed = false;

@@ -10,7 +10,7 @@ namespace Decision_tree
     public class Attribute
     {
         string name;
-        List<string> values;
+        List<AttributeValue> values;
         int countValues;
         bool isUsed;
         int index;
@@ -18,7 +18,7 @@ namespace Decision_tree
         public Attribute(string name)
         {
             this.name = name;
-            values = new List<string>();
+            values = new List<AttributeValue>();
             countValues = 0;
             isUsed = false;
         }
@@ -35,7 +35,7 @@ namespace Decision_tree
             set { index = value; }
         }
 
-        public void addValue(string value)
+        public void addValue(AttributeValue value)
         {
             values.Add(value);
             countValues += 1;
@@ -46,12 +46,12 @@ namespace Decision_tree
             return countValues;
         }
 
-        public string getValue(int index)
+        public AttributeValue getValue(int index)
         {
             return values[index];
         }
 
-        public bool containValue(string value)
+        public bool containValue(AttributeValue value)
         {
             return values.Contains(value);
         }
