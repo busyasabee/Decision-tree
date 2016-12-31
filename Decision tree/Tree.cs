@@ -320,15 +320,6 @@ namespace Decision_tree
                     for (int k = 0; k < attributeValuesCount; k++)
                     {
                         AttributeValue attributeValue = attribute.getValue(k);
-
-                        //for (int i = 0; i < leafsLabelsCount; i++)
-                        //{
-                        //    attributeValue.addLeafLabelCount(0);
-                        //}
-                        //valueLeafLabelsCountDict.Add(attributeValue, new List<int>());
-                        //valueLeafLabelsCountDict[attributeValue].Add(0);
-                        //valueLeafLabelsCountDict[attributeValue].Add(0);
-                        //pLabelsDict.Add(attributeValue, new List<double>());
                         double pValue = (double)valuesFrequency[k] / lineCount;
                         pValues.Add(pValue);
                     }
