@@ -17,11 +17,8 @@ namespace Decision_tree
             int leafLabelsCount = 2;
             Tree tree = new Tree();
             tree.LeafLabelsCount = leafLabelsCount;
-            bool[] usedAttributes;
             var inputFilePath = @"E:\Projects\Visual Studio\Console\Decision tree\table.txt";
-            tree.readTableFromFile(inputFilePath, out usedAttributes);
-            var outputFilePath = @"E:\Projects\Visual Studio\Console\Decision tree\output.txt";
-            tree.outputFilePath = outputFilePath;
+            tree.readTableFromFile(inputFilePath);
             tree.showTable();
             int lineCount = tree.tableLinesCount;
             List<int> lineRange = new List<int>();

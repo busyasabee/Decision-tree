@@ -14,7 +14,7 @@ namespace Decision_tree
         int countValues;
         bool isUsed;
         int index;
-        double entropy = 0d;
+        double entropy;
 
         public Attribute(string name)
         {
@@ -51,7 +51,6 @@ namespace Decision_tree
 
         public void addValue(AttributeValue value)
         {
- 
             values.Add(value);
             countValues += 1;
         }

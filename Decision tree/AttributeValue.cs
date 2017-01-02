@@ -13,7 +13,7 @@ namespace Decision_tree
         private int labelsCount;
         private List<int> lineNumbers;
         private int[] leafLabelsCount;
-        public double[] pLabels;
+        private double[] pLabels;
         private double pValue;
 
 
@@ -23,7 +23,7 @@ namespace Decision_tree
             lineNumbers = new List<int>();
             this.labelsCount = labelsCount;
             leafLabelsCount = new int[this.labelsCount];
-            pLabels = new double[labelsCount];
+            PLabels = new double[labelsCount];
         }
 
         public string getPlainValue()
@@ -99,7 +99,7 @@ namespace Decision_tree
             frequency = 0;
             lineNumbers = new List<int>();
             leafLabelsCount = new int[labelsCount];
-            pLabels = new double[labelsCount];
+            PLabels = new double[labelsCount];
         }
         
         public int getFrequency()
@@ -111,6 +111,19 @@ namespace Decision_tree
         {
             get { return pValue; }
             set { pValue = value; } 
+        }
+
+        public double[] PLabels
+        {
+            get
+            {
+                return pLabels;
+            }
+
+            set
+            {
+                pLabels = value;
+            }
         }
     }
 }
