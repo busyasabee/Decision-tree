@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 namespace Decision_tree
 {
 
-    public class Attribute
+    public class Attribute : IComparable
     {
         string name;
         List<AttributeValue> values;
         int countValues;
         bool isUsed;
         int index;
+        double entropy = 0d;
 
         public Attribute(string name)
         {
@@ -35,8 +36,22 @@ namespace Decision_tree
             set { index = value; }
         }
 
+        public double Entropy
+        {
+            get
+            {
+                return entropy;
+            }
+
+            set
+            {
+                entropy = value;
+            }
+        }
+
         public void addValue(AttributeValue value)
         {
+ 
             values.Add(value);
             countValues += 1;
         }
@@ -54,6 +69,17 @@ namespace Decision_tree
         public bool containValue(AttributeValue value)
         {
             return values.Contains(value);
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+
+            Attribute otherAttribute = obj as Attribute;
+            if (otherAttribute != null)
+                return entropy.CompareTo(otherAttribute.Entropy);
+            else
+                throw new ArgumentException("Object is not a Attribute");
         }
     }
 

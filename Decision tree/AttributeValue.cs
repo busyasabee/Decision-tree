@@ -14,6 +14,7 @@ namespace Decision_tree
         private List<int> lineNumbers;
         private int[] leafLabelsCount;
         public double[] pLabels;
+        private double pValue;
 
 
         public AttributeValue(string value, int labelsCount)
@@ -100,6 +101,16 @@ namespace Decision_tree
             leafLabelsCount = new int[labelsCount];
             pLabels = new double[labelsCount];
         }
+        
+        public int getFrequency()
+        {
+            return frequency;
+        }
 
+        public double PValue
+        {
+            get { return pValue; }
+            set { pValue = value; } 
+        }
     }
 }

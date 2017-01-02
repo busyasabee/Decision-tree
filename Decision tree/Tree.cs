@@ -88,7 +88,6 @@ namespace Decision_tree
 
                 for (int j = 0; j < lineCount; j++)
                 {
-                    //string value = table[j][i];
                     AttributeValue value = new AttributeValue(table[j][i], leafsLabelsCount);
 
                     if (attribute.containValue(value) == false)
@@ -175,6 +174,7 @@ namespace Decision_tree
 
         void increaseConsoleWidth(int value)
         {
+
             consoleWidth += value;
 
             if (Console.WindowWidth < consoleWidth)
@@ -191,6 +191,23 @@ namespace Decision_tree
 
         }
 
+        public Attribute findAttributeWithMinimumEntropy()
+        {
+            double minEntropy = 1d;
+            int attributeIndex = Int32.MaxValue;
+
+            foreach (var attribute in attributes)
+            {
+                if (attribute.Entropy < minEntropy && attribute.IsUsed == false)
+                {
+                    minEntropy = attribute.Entropy;
+                    attributeIndex = attribute.Index;
+                }
+            }
+
+            return attributes[attributeIndex - 1];
+        }
+
         // lineNumbers - certain lines from table
         public void run(List<int> lineNumbers, string branchLabel = "")
         {
@@ -199,8 +216,6 @@ namespace Decision_tree
             int branchLabelLength = branchLabel.Length;
             int lineCount = lineNumbers.Count;
             consoleWidth = indent.Length;
-            // key - one of the attribute values
-            Dictionary<string, List<int>> valueLineNumbersDict = new Dictionary<string, List<int>>();
             Dictionary<string, List<int>> valueLeafLabelsCountDict = new Dictionary<string, List<int>>();
             double nodeEntropy = 0;
 
@@ -274,9 +289,6 @@ namespace Decision_tree
                 return;
             }
 
-            Dictionary<Attribute, double> childEntropyDict = new Dictionary<Attribute, double>();
-            Attribute minEntropyAttribute = new Attribute("");
-
             foreach (var attribute in attributes)
             {
                 // Number of column
@@ -287,41 +299,28 @@ namespace Decision_tree
                 {
 
                     int[] valuesFrequency = new int[attributeValuesCount];
-                    List<double> pValues = new List<double>();
                     Dictionary<string, List<double>> pLabelsDict = new Dictionary<string, List<double>>();
-
-                    /*for (int i = 0; i < attributeValuesCount; i++)
-                    {
-                        AttributeValue attributeValue = attribute.getValue(i);
-                        valueLineNumbersDict.Add(attributeValue, new List<int>());
-
-                    }*/
 
                     for (int j = 0; j < lineNumbers.Count; j++)
                     {  
                         for (int k = 0; k < attributeValuesCount; k++)
                         {
-                            //string attributeValue = attribute.getValue(k);
-                            AttributeValue attributeValue = attribute.getValue(k); // может в атрибуте хранить список AttributeValue
+                            AttributeValue attributeValue = attribute.getValue(k); 
                             string innerValue = attributeValue.getPlainValue();
 
                             if (table[lineNumbers[j]][attributeIndex] == innerValue)
-                            {
-                                //valuesFrequency[k] += 1;
+                            {                           
                                 attributeValue.increaseFrequency(1);
                                 attributeValue.addLineNumber(lineNumbers[j]);
-                                //valueLineNumbersDict[attributeValue].Add(lineNumbers[j]);
                             }
-
                         }
-
                     }
 
                     for (int k = 0; k < attributeValuesCount; k++)
                     {
                         AttributeValue attributeValue = attribute.getValue(k);
-                        double pValue = (double)valuesFrequency[k] / lineCount;
-                        pValues.Add(pValue);
+                        attributeValue.PValue = (double) attributeValue.getFrequency() / lineCount;
+
                     }
 
                     for (int i = 0; i < attribute.getCountValues(); i++)
@@ -352,7 +351,7 @@ namespace Decision_tree
                     }
 
 
-                    for (int j = 0; j < pValues.Count; j++)
+                    for (int j = 0; j < attributeValuesCount; j++)
                     {
                         AttributeValue attributeValue = attribute.getValue(j);
                         double pTmp = 0;
@@ -362,23 +361,22 @@ namespace Decision_tree
                             pTmp += - attributeValue.pLabels[k] * Math.Log(attributeValue.pLabels[k], 2);
                         }
 
-                        entropyChild += pValues[j] * pTmp; // entropy, if divide by the attribute
+                        entropyChild += attributeValue.PValue * pTmp; // entropy, if divide by the attribute
 
 
                     }
 
                     if (Double.IsNaN(entropyChild) == true) entropyChild = 0;
 
-                    childEntropyDict.Add(attribute, entropyChild);
+                    attribute.Entropy = entropyChild;
+                    entropyChild = 0d;
 
                 }
 
-                valueLineNumbersDict.Clear();
-
             }
 
-            double minEntropy = childEntropyDict.Values.Min();
-            Attribute attributeForSplit = childEntropyDict.FirstOrDefault(x => x.Value == minEntropy).Key; 
+
+            Attribute attributeForSplit = findAttributeWithMinimumEntropy();
             int indexOfAttribute = attributeForSplit.Index;
             attributes[indexOfAttribute - 1].IsUsed = true;
             List<List<int>> linesAfterSplit = new List<List<int>>();
@@ -434,6 +432,5 @@ namespace Decision_tree
             indent = indent.Remove(0, whitespacesCount);
 
         }
-
     }
 }
